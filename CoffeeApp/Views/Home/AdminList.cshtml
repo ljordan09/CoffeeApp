@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "AdminList";
+}
+
+
+@using CoffeeApp.Models;
+<h2>Current Inventory</h2>
+<table class="table">
+    <tr>
+        <th>ProductID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    @foreach (var item in ViewBag.OutputList)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.Name</td>
+            <td>@item.Type</td>
+            <td>@item.Quantity</td>
+            <td>@item.Price</td>
+            <td><button type="button" id="updateInventory" href="/Home/UpdateInventory?id=@item.ProductID">Update</button></td>
+            <td><button type="button" id="deleteItem" href="/Home/DeleteItem?@item.Type" onclick="return confirm('Are you sure?')">Delete</button></td>
+        </tr>
+    }
+</table>
+

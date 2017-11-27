@@ -1,0 +1,9 @@
+﻿body {
+    background-image: url('images/white-concrete-wall-for-background_1249-263.jpg');
+    background-size: cover;
+}
+.jumbotron {
+    background-image: url('images/white-concrete-wall-for-background_1249-263.jpg');
+    background-size: cover;
+    height:200px;
+}

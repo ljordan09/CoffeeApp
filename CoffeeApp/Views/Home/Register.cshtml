@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+<head>
+</head>
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<h3>@ViewBag.Name</h3>
+@model CoffeeApp.Models.SignUps
+
+
+<div class="container">
+    <h2>Registration</h2>
+    <form action="/Home/SaveUser" method="post" class="form-group" style="color: brown">
+
+        <div class="form-group">
+            <label for="Company Name">Company Name</label>
+            <input type="text" class="form-control" id="First Name" placeholder="Company Name" pattern="^[A-Z a-z ]{1,}" name="CompanyName" required />
+        </div>
+        <div class="form-group">
+            <label for="First Name">First Name</label>
+            <input type="text" class="form-control" id="First Name" placeholder="First Name" pattern="^[A-Z a-z ]{1,}" name="FirstName" required />
+        </div>
+        <div class="form-group">
+            <label for="Last Name">Last Name</label>
+            <input type="text" class="form-control" id="Last Name" placeholder="Last Name" pattern="^[A-Za-z]{1,}" name="LastName" required />
+        </div>
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" placeholder="john@company.com" name="Email" required />
+        </div>
+        <div class="form-group">
+            <label for="Password">Password</label>
+            <input type="password" class="form-control" id="Password" placeholder="Password" name="Password" required />
+        </div>
+        <div class="form-group">
+            <label for="Phone Number">Phone Number</label>
+            <input type="text" class="form-control" id="Phone Number" placeholder="1234567891" pattern="^[0-9]{10}" name="Phone" required />
+        </div>
+        <div class="form-group">
+            <label for="Zip">Zip Code</label>
+            <input type="text" class="form-control" id="Zip" placeholder="12345" pattern="^[0-9]{5}" name="Zip" />
+        </div>
+        <input type="submit" value="Register" style="background: brown; color: white" />
+    </form>
+</div>
