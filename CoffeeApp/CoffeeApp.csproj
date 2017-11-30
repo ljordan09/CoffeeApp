@@ -150,6 +150,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CoffeeDBDAL.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -251,13 +252,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Style\images\background.jpg" />
     <Content Include="Style\images\brazil.jpg" />
-    <Content Include="Style\images\coffee.jpg" />
     <Content Include="Style\images\columbia.jpg" />
     <Content Include="Style\images\honduras.jpg" />
     <Content Include="Style\images\white-concrete-wall-for-background_1249-263.jpg" />
-    <Content Include="Style\images\wood.jpg" />
     <Content Include="Style\StyleSheet1.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -277,6 +275,7 @@
     <Content Include="Views\Home\DisplayName.cshtml" />
     <Content Include="Views\Home\AdminList.cshtml" />
     <Content Include="Views\Home\UpdateInventory.cshtml" />
+    <Content Include="Views\Home\AddInventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

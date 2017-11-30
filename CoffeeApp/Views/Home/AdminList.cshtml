@@ -22,8 +22,10 @@
             <td>@item.Type</td>
             <td>@item.Quantity</td>
             <td>@item.Price</td>
-            <td><button type="button" id="updateInventory" href="/Home/UpdateInventory?id=@item.ProductID">Update</button></td>
-            <td><button type="button" id="deleteItem" href="/Home/DeleteItem?@item.Type" onclick="return confirm('Are you sure?')">Delete</button></td>
+            <td><a class="btn btn-default" id="updateInventory" href="/Home/UpdateInventory?ProductID=@item.ProductID">Update</a></td>
+            <td><a class="btn btn-danger" id="deleteItem" href="/Home/DeleteItem?ProductID=@item.ProductID" onclick="return confirm('Are you sure?')">Delete</a></td>
+            <td><a href="/Home/Inventory" class="btn btn-primary" name="Inventory" id="addItem">Add New Item</a></td>
+
         </tr>
     }
 </table>

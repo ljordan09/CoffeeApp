@@ -4,16 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CoffeeDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'CoffeeDB.dbo.Items' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="CoffeeDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="ProductID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Type" />
-            <PropertyRef Name="Quantity" />
-            <PropertyRef Name="Price" />
           </Key>
           <Property Name="ProductID" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Name" Type="nchar" MaxLength="10" Nullable="false" />
@@ -34,19 +28,10 @@ warning 6002: The table/view 'CoffeeDB.dbo.Items' does not have a primary key de
           <Property Name="Zip" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CoffeeDBModel1StoreContainer">
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Items" EntityType="Self.Items" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Items].[ProductID] AS [ProductID], 
-    [Items].[Name] AS [Name], 
-    [Items].[Type] AS [Type], 
-    [Items].[Quantity] AS [Quantity], 
-    [Items].[Price] AS [Price]
-    FROM [dbo].[Items] AS [Items]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CoffeeDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -65,10 +50,6 @@ warning 6002: The table/view 'CoffeeDB.dbo.Items' does not have a primary key de
         <EntityType Name="Item">
           <Key>
             <PropertyRef Name="ProductID" />
-            <PropertyRef Name="Name" />
-            <PropertyRef Name="Type" />
-            <PropertyRef Name="Quantity" />
-            <PropertyRef Name="Price" />
           </Key>
           <Property Name="ProductID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />

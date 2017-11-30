@@ -80,26 +80,51 @@ namespace CoffeeApp.Controllers
             return View();
         }
 
-        public ActionResult UpdateInventory(string id)
+        public ActionResult UpdateInventory(string ProductID)
         {
             CoffeeDBEntities3 ORM = new CoffeeDBEntities3();
 
-            Item ItemChoice = ORM.Items.Find(id);
+            Item RecordToBeUpdated = ORM.Items.Find(ProductID);
 
-            if (ItemChoice != null)
+            if (RecordToBeUpdated != null)
             {
-                ViewBag.ItemChoice = ItemChoice;
-                return View();
+                ViewBag.RecordToBeUpdated = RecordToBeUpdated;
+                return View("UpdateInventory");
+            }
+            else
+            {
+                return RedirectToAction("AdminList");
             }
 
-            return RedirectToAction("AdminList");
+            
 
         }
-        public ActionResult DeleteItem(string id)
+
+        public ActionResult SaveUpdatedItem(Item RecordToBeUpdated)
+        {
+            //Todo: validation and exception Handling
+            //1.Find the original record
+            CoffeeDBEntities3 ORM = new CoffeeDBEntities3();
+            Item temp = ORM.Items.Find(RecordToBeUpdated.ProductID);
+
+            //2.Do the update on that record, then save to the database
+            temp.Name = RecordToBeUpdated.Name;
+            temp.Type = RecordToBeUpdated.Type;
+            temp.Quantity = RecordToBeUpdated.Quantity;
+            temp.Price = RecordToBeUpdated.Price;
+
+
+            ORM.Entry(temp).State = System.Data.Entity.EntityState.Modified;
+            ORM.SaveChanges();//saves to DB
+
+            //3.Load all customer records
+            return RedirectToAction("AdminList");
+        }
+        public ActionResult DeleteItem(string ProductID)
         {
             CoffeeDBEntities3 ORM = new CoffeeDBEntities3();
 
-            Item deleteItem = ORM.Items.Find(id);
+            Item deleteItem = ORM.Items.Find(ProductID);
 
             if (deleteItem != null)
             {
@@ -109,13 +134,48 @@ namespace CoffeeApp.Controllers
 
             return RedirectToAction("AdminList");
         }
-       
+         
+        public ActionResult Inventory()
+        {
+            return View("AddInventory");
+        }
+        public ActionResult AddInventory(Item newItem)
+        {
+            if (ModelState.IsValid)
+            {
+                CoffeeDBEntities3 ORM = new CoffeeDBEntities3();
+                    
+                List<Item> items = new List<Item>();
+                items = (from i in ORM.Items
+                         where i.ProductID == newItem.ProductID
+                         select i).ToList();    
+
+                if (items.Count == 0)
+                {
+                    ORM.Items.Add(newItem);
+                    ORM.SaveChanges();
+
+                    return RedirectToAction("AdminList");
+                }
+                else
+                {
+                    ViewBag.ProductName = newItem.ProductID;
+                    return View();
+                }
+            }
+            else
+            {
+                return View("AddInventory");
+            }
+        }
+
+        //public ActionResult ItemAddForm()
+        //{
+        //    return View();
+        //}
 
 
 
-
-
-        
         //action to add inventory quantities
         //action to decrement inventory quantities
         //validate email addresses
